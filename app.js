@@ -1,20 +1,18 @@
-const randomNumber = +Math.floor(Math.random() * (3 - 1) + 1);
+const randomNumber = Math.floor(Math.random() * (3 - 1) + 1);
 let userNumber;
 
-function loop() {
+function createGame() {
 
-    while (userNumber !== null && +userNumber !== +randomNumber) {
-        userNumber = prompt('Угадай число, которое я задумал от 1 до 10');
+    while (userNumber !== null && +userNumber !== randomNumber) {
+        userNumber = prompt('Guess my number from 1 to 3');
     }
-    alert('Сгенерированое число было ' + randomNumber);
-
 }
 
-function unloop() {
-    userNumber = prompt('Угадай число, которое я задумал от 1 до 10');
-    let result = +userNumber === +randomNumber;
-    alert(result);
+function getResultOfGame() {
+    if (+userNumber === randomNumber) {
+        alert('You are right, my nymber is ' + randomNumber);
+    } 
 }
 
-loop();
-unloop();
+createGame();
+getResultOfGame();
