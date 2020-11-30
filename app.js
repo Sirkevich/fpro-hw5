@@ -1,18 +1,27 @@
-const randomNumber = Math.floor(Math.random() * (3 - 1) + 1);
-let userNumber;
+function getRandomNumber(x) {
+    return Math.floor(Math.random() * (x - 1) + 1);
+}
 
-function createGame() {
+function getUserNumber() {
+    return prompt('Enter your number from 1 to 5');
+}
 
-    while (userNumber !== null && +userNumber !== randomNumber) {
-        userNumber = prompt('Guess my number from 1 to 3');
+function Game() {
+    const randomNumber = getRandomNumber(5);
+    let userNumber;
+    do {
+        userNumber = getUserNumber();
+    } while (+userNumber !== randomNumber && userNumber !== null);
+    return +userNumber === randomNumber;
+}
+
+function runGame() {
+
+    if (Game()) {
+        confirm('Yo win');
+    } else {
+        confirm('You lose');
     }
 }
 
-function getResultOfGame() {
-    if (+userNumber === randomNumber) {
-        alert('You are right, my nymber is ' + randomNumber);
-    } 
-}
-
-createGame();
-getResultOfGame();
+runGame();
